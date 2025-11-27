@@ -1,0 +1,20 @@
+{
+    "name": "HANA Todo List",
+    "short_name": "HANA Todo",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffe8f6",
+    "theme_color": "#c99bff",
+    "icons": [
+        {
+            "src": "/icos/icon256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icos/icon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
