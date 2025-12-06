@@ -1,0 +1,471 @@
+/* FONT 설정 */
+@font-face {
+    font-family: "Gamja";
+    src: url("/fonts/GamjaFlower.ttf") format("truetype");
+    font-display: swap;
+}
+
+/* 사용자 이름 placeholder (지금은 안 써도 무방) */
+.username-input::placeholder {
+    color: #ffffffaa;
+}
+
+/* 전체 배경 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Gamja", sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, #d9b7ff 0%, #b789ff 40%, #8a4bff 100%);
+    background-attachment: fixed;
+}
+
+/* 전체 레이아웃  */
+.wrapper {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.app {
+    width: 90vw;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 쿠로미 (큰 이미지) */
+.big-kuromi {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    opacity: 0.95;
+    pointer-events: none;
+    animation: floatKuromi 3.5s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes floatKuromi {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-52%, -55%) rotate(-3deg);
+    }
+
+    50% {
+        transform: translate(-50%, -52%) rotate(2deg);
+    }
+
+    75% {
+        transform: translate(-48%, -54%) rotate(-2deg);
+    }
+}
+
+/*  텍스트 영역  */
+h2 {
+    font-size: 28px;
+    color: #7b3ff9;
+    text-align: center;
+    margin: 4px 0;
+}
+
+/* 시계 */
+.date {
+    font-size: 18px;
+    text-align: center;
+    color: #f082e2;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    animation: glowClock 3s ease-in-out infinite;
+    margin-top: 6px;
+    filter: drop-shadow(0 0 6px #ffffffaa);
+}
+
+/* 시계 뒷배경 몽글몽글 */
+.dream-glow {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 150px;
+
+    background: radial-gradient(circle,
+            rgba(255, 170, 255, 0.90) 0%,
+            rgba(255, 200, 255, 0.65) 35%,
+            rgba(255, 230, 255, 0.30) 65%,
+            rgba(255, 255, 255, 0.05) 100%);
+
+    filter: blur(35px);
+    opacity: 0.65;
+    animation: glowFade 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes glowFade {
+
+    0%,
+    100% {
+        opacity: .4;
+        text-shadow: 0 0 6px #ffffffaa, 0 0 10px #ffcaf8aa;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow:
+            0 0 8px #ffffff,
+            0 0 16px #ffc7ff,
+            0 0 26px #ff9ffa;
+    }
+}
+
+@keyframes glowClock {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        text-shadow: 0 0 6px #ffffffaa, 0 0 10px #ffcaf8aa;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow:
+            0 0 10px #ffffff,
+            0 0 18px #ffc7ff,
+            0 0 28px #ff9ffa;
+    }
+}
+
+.sub-text {
+    font-size: 17px;
+    color: #fff;
+    opacity: 0.8;
+    margin-bottom: 12px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 이름 인라인 수정  */
+.username-display {
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+.username-display:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.username-editing {
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 8px;
+    padding: 4px 8px;
+    outline: none;
+    border: none;
+    caret-color: #7b3ff9;
+    text-align: center;
+    font-size: inherit;
+}
+
+.username-editing:focus {
+    text-align: center;
+}
+
+/*  입력창  */
+.todo-input-wrap {
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 16px;
+    position: relative;
+    z-index: 3;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* 여기 다시 돌려놓기: input 에 직접 스타일 */
+.todo-input-wrap input {
+    width: 220px;
+    padding: 8px 10px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    color: #5303ff;
+    font-size: 15px;
+    box-sizing: border-box;
+    border: none !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+    text-align: center;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/*  추가 버튼  */
+.add-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+}
+
+.add-icon {
+    width: 58px;
+    transition: transform .18s;
+}
+
+.add-btn:active .add-icon {
+    transform: scale(1.23) rotate(-4deg);
+}
+
+/* ☁ 구름 애니메이션 ☁  */
+.cloud {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.9;
+    animation: floatCloud 6s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+@keyframes floatCloud {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.cloud1 {
+    width: 95px;
+    top: 5%;
+    left: 10px;
+}
+
+.cloud2 {
+    width: 70px;
+    top: 10%;
+    right: 14%;
+}
+
+.cloud3 {
+    width: 135px;
+    top: 18%;
+    left: 42%;
+    animation: floatCloud 6s ease-in-out infinite, sideMove 12s ease-in-out infinite;
+}
+
+/* 좌우 이동 애니메이션 */
+@keyframes sideMove {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(40px);
+
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* TODO 리스트 */
+.todo-list {
+    margin: 30px auto 0 auto;
+    width: 100%;
+    max-width: 340px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.todo-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 14px;
+    width: 90%;
+    max-width: 340px;
+    background: #ffffffd8;
+    border-radius: 18px;
+    margin-bottom: 18px;
+}
+
+.todo-list li span {
+    white-space: normal !important;
+    word-break: break-word;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    line-height: 1.4;
+}
+
+.todo-list input.edit-input {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    height: auto;
+    min-height: 40px;
+    line-height: 1.4;
+}
+
+.edit-input {
+    background: #ffe5ff;
+    border-radius: 12px;
+    padding: 6px;
+    border: none;
+    text-align: left;
+    /* 줄바꿈 방지 + 한 줄 유지 */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.todo-text {
+    flex: 1;
+    flex-shrink: 1;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+/* 완료 표시 */
+.todo-text.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: #b083ff;
+    transition: 0.2s;
+}
+
+/* 체크버튼 – 검정 테두리 제거 */
+.check-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 4px;
+}
+
+.check-btn img {
+    width: 38px;
+    border: none;
+}
+
+.check-btn {
+    align-self: flex-start;
+}
+
+.action-group {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    width: 85px;
+    justify-content: flex-end;
+}
+
+/* 수정 input */
+.edit-input {
+    width: 100%;
+    padding: 6px;
+    border-radius: 12px;
+    background: #ffe5ff;
+    border: none;
+}
+
+/* 수정, 삭제 버튼 */
+.action-group {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.text-btn {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+}
+
+.text-btn.delete {
+    background: #ffb6ef;
+    color: #7b215c;
+}
+
+/* 할 일 텍스트/인풋 한 줄 고정용 */
+.single-line {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 55%;
+    display: block !important;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 480px) {
+
+    .app {
+        width: 95vw;
+        margin: 0 auto;
+        position: relative;
+        z-index: 5;
+    }
+
+    .big-kuromi {
+        top: auto;
+        bottom: 20px;
+        transform: translateX(-50%);
+        width: 180px;
+    }
+}
+
+input,
+textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}

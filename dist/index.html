@@ -2,27 +2,37 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta name="theme-color" content="#8e74c9" />
 
-    <title>HANA Todo List</title>
-
-    <!-- PWA -->
-    <link rel="manifest" href="./manifest.json" />
-    <link rel="icon" type="image/png" href="./icos/icon192.png" />
-
-    <!-- iOS PWA -->
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <link rel="apple-touch-icon" href="./icos/icon192.png" />
-  <script type="module" crossorigin src="./assets/index-Ce4yVfAD.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Cs0Dt1hU.css">
-</head>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="/icon-180.png" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Todo List</title>
+  <script type="module" crossorigin src="/assets/index-DG-sKgy3.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Bc9YDgRN.css">
+<link rel="manifest" href="/manifest.webmanifest"></head>
 
 <body>
     <div id="root"></div>
 
-    <!-- 🔥 반드시 상대경로(./)로 해야 Electron에서도 로딩됨 -->
+
+    <!-- ⭐ 반드시 있어야 하는 코드 ⭐ -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js")
+                    .then((reg) => console.log("Service Worker Registered 💜", reg))
+                    .catch((err) => console.error("❌ Service Worker registration failed:", err));
+            });
+        }
+    </script>
+
 </body>
 
 </html>
