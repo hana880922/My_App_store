@@ -1,7 +1,14 @@
-.vercel
+ .vercel
 .env*.local
-node_modules
+node_modules/
 build/
 dist/
+release/
+src/release/
+*.dmg
+*.exe
+*.app
+*.zip
+*.asar
 .DS_Store
 .env
